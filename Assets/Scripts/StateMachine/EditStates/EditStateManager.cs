@@ -14,7 +14,7 @@ public class EditStateManager : MonoBehaviour
     public EditState editState {get; private set;}
     public ViewState viewState {get; private set;}
 
-    PickStateManager pickStateManager;
+    private PicksController picksController;
 
     // Input actions
     public InputManager inputManager;
@@ -40,15 +40,13 @@ public class EditStateManager : MonoBehaviour
         editState = new EditState();
         viewState = new ViewState();
 
-        pickStateManager = PickStateManager.instance;
-
         currentState = viewState;
 
         inputManager = new InputManager();
     }
 
     void Start() {
-        pickStateManager = PickStateManager.instance;
+        picksController = PicksController.instance;
         currentState.stateEnter();
     }
 

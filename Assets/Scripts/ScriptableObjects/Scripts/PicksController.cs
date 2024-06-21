@@ -57,6 +57,7 @@ public class PicksController : MonoBehaviour
         }
 
         inputManager = new InputManager();
+        currentTile = nonEdit;
     }
 
     void Start() {
@@ -64,7 +65,6 @@ public class PicksController : MonoBehaviour
 
         initializeHotbar();
 
-        currentTile = nonEdit;
         currentTile.stateEnter();        
     }
 
@@ -92,7 +92,7 @@ public class PicksController : MonoBehaviour
 
     void initializeUI() {
         for(int i = 0; i < 4; i++) {
-            hotbarObjects[i].GetComponentInChildren<Image>().sprite = gameManager.tileHotbar[i].UIImage;
+            hotbarObjects[i].GetComponent<HotbarElement>().setImage(i);
         }
         
     }
