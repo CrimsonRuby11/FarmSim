@@ -9,5 +9,10 @@ public class Pick3 : PickBaseState
         base.stateEnter();
 
         pickText = "Tree";
+
+        pickPf = stateManager.pick3pf;
+
+        destroyPf();
+        initiatePf();
     }
 }

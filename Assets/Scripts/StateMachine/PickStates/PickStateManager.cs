@@ -30,9 +30,12 @@ public class PickStateManager : MonoBehaviour
     [SerializeField]
     GameObject tileParent;
     [SerializeField]
+    public Material transparentMaterial;
+    [SerializeField]
     public GameObject pointerParent;
     [SerializeField]
     public GameObject runtimeParent;
+    
 
     public InputManager inputManager;
     InputAction pickObjectInput;

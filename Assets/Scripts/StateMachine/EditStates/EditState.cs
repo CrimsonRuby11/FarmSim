@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class EditState : EditBaseState
 {
     public InputManager inputManager;
-    PickStateManager pickStateManager;
+    PicksController picksController;
     
     InputAction pickObjectInput;
 
@@ -14,14 +14,14 @@ public class EditState : EditBaseState
     {
         base.stateEnter();
 
-        pickStateManager = PickStateManager.instance;
+        picksController = PicksController.instance;
 
         stateManager.switchGrid(true);
         stateManager.switchHighlighter(false);
 
         stateManager.startUIAnimation();
 
-        pickStateManager.transitionState(pickStateManager.pick1);
+        picksController.transitionState(GameManager.instance.tileHotbar[0]);
     }
 
     public override void stateUpdate()
@@ -30,6 +30,6 @@ public class EditState : EditBaseState
     }
 
     public override void stateExit() {
-        pickStateManager.transitionState(pickStateManager.nonEditPick);
+        picksController.transitionState(picksController.nonEdit);
     }
 }
