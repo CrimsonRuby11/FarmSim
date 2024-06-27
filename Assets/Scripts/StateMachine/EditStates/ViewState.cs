@@ -13,4 +13,9 @@ public class ViewState : EditBaseState
 
         stateManager.startUIAnimation();
     }
+
+    public override void stateExit()
+    {
+        base.stateExit();
+    }
 }

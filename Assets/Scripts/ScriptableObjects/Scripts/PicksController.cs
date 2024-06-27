@@ -16,7 +16,7 @@ public class PicksController : MonoBehaviour
     public TileObject wall;
     public TileObject tree;
     public TileObject delete;
-    public TileObject nonEdit;
+    public TileObject nullTile;
 
     public GameObject[] hotbarObjects;
     public InputManager inputManager;
@@ -57,7 +57,7 @@ public class PicksController : MonoBehaviour
         }
 
         inputManager = new InputManager();
-        currentTile = nonEdit;
+        currentTile = nullTile;
     }
 
     void Start() {
@@ -92,8 +92,11 @@ public class PicksController : MonoBehaviour
 
     void initializeUI() {
         for(int i = 0; i < 4; i++) {
-            hotbarObjects[i].GetComponent<HotbarElement>().setImage(i);
+            setHotbarImage(i);
         }
-        
+    }
+
+    public void setHotbarImage(int i) {
+        hotbarObjects[i].GetComponent<HotbarElement>().setImage(i);
     }
 }

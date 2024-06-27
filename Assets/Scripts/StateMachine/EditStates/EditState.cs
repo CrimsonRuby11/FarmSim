@@ -30,6 +30,6 @@ public class EditState : EditBaseState
     }
 
     public override void stateExit() {
-        picksController.transitionState(picksController.nonEdit);
+        picksController.transitionState(picksController.nullTile);
     }
 }

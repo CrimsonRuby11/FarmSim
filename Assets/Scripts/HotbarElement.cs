@@ -8,7 +8,13 @@ public class HotbarElement : MonoBehaviour
     [SerializeField]
     private Image imageComponent;
 
+    private GameManager gameManager;
+
+    void Start() {
+        gameManager = GameManager.instance;
+    }
+
     public void setImage(int t) {
-        imageComponent.sprite = GameManager.instance.tileHotbar[t].UIImage;
+        imageComponent.sprite = gameManager.tileHotbar[t].UIImage;
     }
 }
