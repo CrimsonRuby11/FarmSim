@@ -16,6 +16,7 @@ public class PicksController : MonoBehaviour
     public TileObject wall;
     public TileObject tree;
     public TileObject delete;
+    public TileObject bush;
     public TileObject nullTile;
 
     public GameObject[] hotbarObjects;
@@ -85,7 +86,7 @@ public class PicksController : MonoBehaviour
         gameManager.tileHotbar[0] = floor;
         gameManager.tileHotbar[1] = wall;
         gameManager.tileHotbar[2] = tree;
-        gameManager.tileHotbar[3] = delete;
+        gameManager.tileHotbar[3] = bush;
 
         initializeUI();
     }

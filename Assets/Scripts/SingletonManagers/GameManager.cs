@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         setHotbarTile(0, controller.floor);
         setHotbarTile(1, controller.tree);
         setHotbarTile(2, controller.wall);
-        setHotbarTile(3, controller.delete);
+        setHotbarTile(3, controller.bush);
     }
 
     public void setGrid(int x, int y, GameObject g) {

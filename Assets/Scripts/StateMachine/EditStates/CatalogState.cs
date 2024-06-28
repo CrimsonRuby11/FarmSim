@@ -12,6 +12,7 @@ public class CatalogState : EditBaseState
     {
         base.stateEnter();
 
+        stateManager.switchHighlighter(false);
         stateManager.catalogPanel.SetActive(true);
         fakeObjectController.instance.setMove(false);
     }
@@ -20,6 +21,7 @@ public class CatalogState : EditBaseState
     {
         base.stateExit();
 
+        stateManager.switchHighlighter(true);
         stateManager.catalogPanel.SetActive(false);
         fakeObjectController.instance.setMove(true);
     }
