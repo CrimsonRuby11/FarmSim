@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private bool[,] isOccupied;
-    private Dictionary<(int, int), GameObject> gridobjects;
+    private Dictionary<(int, int), (TileObject t, GameObject g)> gridobjects;
     private PicksController controller;
 
     public TileObject[] tileHotbar;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
-        gridobjects = new Dictionary<(int, int), GameObject>();
+        gridobjects = new Dictionary<(int, int), (TileObject t, GameObject g)>();
     }
 
     void Start() {
@@ -34,27 +34,27 @@ public class GameManager : MonoBehaviour
         setHotbarTile(3, controller.bush);
     }
 
-    public void setGrid(int x, int y, GameObject g) {
-        gridobjects.Add((x, y), g);
+    public void setGrid(int x, int y, TileObject t, GameObject g) {
+        gridobjects.Add((x, y), (t, g));
     }
 
     public void resetGrid(int x, int y) {
         if(gridobjects.ContainsKey((x, y))) {
-            Destroy(gridobjects[(x, y)]);
+            Destroy(gridobjects[(x, y)].g);
             gridobjects.Remove((x, y));
         }
     }
 
-    public bool getGrid(int x, int y) {
+    public (TileObject t, GameObject g) getGrid(int x, int y) {
         if(gridobjects.ContainsKey((x, y))) {
-            return true;
+            return gridobjects[(x, y)];
         } else {
-            return false;
+            return (null, null);
         }
     }
 
     public GameObject getObjectInGrid(int x, int y) {
-        return gridobjects[(x, y)];
+        return gridobjects[(x, y)].g;
     }
 
     public int getNextState() {

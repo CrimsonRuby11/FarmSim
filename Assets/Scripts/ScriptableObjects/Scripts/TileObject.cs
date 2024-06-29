@@ -9,6 +9,7 @@ public class TileObject : ScriptableObject
     public string tileText;
     public GameObject[] tilePf;
     public Sprite UIImage;
+    public bool canCrop;
 
     protected GridManager gridManager;
     protected GameManager gameManager;
@@ -52,9 +53,9 @@ public class TileObject : ScriptableObject
     public virtual void placePick(InputAction.CallbackContext ctx) {
         Vector3Int gridPos = gridManager.mousePosOnPlaneGrid;
         // Debug.Log(gridPos);
-        if(!gameManager.getGrid(gridPos.x, gridPos.z)) {
+        if(!gameManager.getGrid(gridPos.x, gridPos.z).g) {
             GameObject placedPick = GameObject.Instantiate(tilePf[pickIndex], pickObject.transform.position, pickObject.transform.rotation, controller.runtimeParent.transform);
-            gameManager.setGrid(gridPos.x, gridPos.z, placedPick);
+            gameManager.setGrid(gridPos.x, gridPos.z, this, placedPick);
         } else {
             Debug.LogError("Grid Occupied!");
         }
